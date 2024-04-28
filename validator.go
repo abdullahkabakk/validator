@@ -1,5 +1,7 @@
 package validator
 
+import "github.com/abdullahkabakk/validator/internal/validator"
+
 // Validator represents a validation instance that can be used to validate structs.
 type Validator struct {
 	// DefaultLang holds the default language for validation error messages.
@@ -27,8 +29,8 @@ func (v *Validator) Validate(input interface{}) error {
 // ValidateWithLang performs validation on the input struct using the specified language.
 // It validates the struct fields based on the validation tags and returns any validation errors encountered.
 func (v *Validator) ValidateWithLang(input interface{}, lang string) error {
-	registerDefaultValidationRules()
-	return validateStruct(input, lang)
+	validator.RegisterDefaultValidationRules()
+	return validator.ValidateStruct(input, lang)
 }
 
 // SetLang sets the default language for validation error messages.
@@ -37,8 +39,8 @@ func (v *Validator) SetLang(lang string) {
 }
 
 // RegisterValidationRule registers a custom validation rule with a given name and validation function.
-func (v *Validator) RegisterValidationRule(name string, validateFunc ValidationRule) {
-	registerValidationRule(name, validateFunc)
+func (v *Validator) RegisterValidationRule(name string, validateFunc validator.ValidationRule) {
+	validator.RegisterValidationRule(name, validateFunc)
 }
 
 // Example usage:

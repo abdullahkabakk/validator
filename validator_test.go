@@ -46,14 +46,14 @@ func TestValidate(t *testing.T) {
 	user := User{Username: "john_doe", Email: "john@example.com", Password: "12345678"}
 	err := validator.Validate(user)
 	if err != nil {
-		t.Errorf("Expected validation to pass, got error: %v", err)
+		t.Errorf("Expected validator to pass, got error: %v", err)
 	}
 
 	// Invalid user (missing required fields)
 	invalidUser := User{}
 	err = validator.Validate(invalidUser)
 	if err == nil {
-		t.Errorf("Expected validation to fail, but it passed")
+		t.Errorf("Expected validator to fail, but it passed")
 	}
 }
 
@@ -73,14 +73,14 @@ func TestValidateWithLang(t *testing.T) {
 	user := User{Username: "john_doe", Email: "john@example.com", Password: "12345678"}
 	err := validator.ValidateWithLang(user, "en")
 	if err != nil {
-		t.Errorf("Expected validation to pass, got error: %v", err)
+		t.Errorf("Expected validator to pass, got error: %v", err)
 	}
 
 	// Invalid user (missing required fields)
 	invalidUser := User{}
 	err = validator.ValidateWithLang(invalidUser, "en")
 	if err == nil {
-		t.Errorf("Expected validation to fail, but it passed")
+		t.Errorf("Expected validator to fail, but it passed")
 	}
 }
 
@@ -103,7 +103,7 @@ func TestRegisterValidationRule(t *testing.T) {
 	// Create a new validator instance
 	v := NewValidator()
 
-	// Define a custom validation rule
+	// Define a custom validator rule
 	validateCustom := func(value reflect.Value, messages locales.ErrorMessages, fieldValue string, rule string) error {
 		if value.Int() < 0 {
 			return errors.New("Value must be greater than or equal to 0")
@@ -111,10 +111,10 @@ func TestRegisterValidationRule(t *testing.T) {
 		return nil
 	}
 
-	// Register the custom validation rule
+	// Register the custom validator rule
 	v.RegisterValidationRule("custom", validateCustom)
 
-	// Define a struct with a custom validation rule
+	// Define a struct with a custom validator rule
 	type Data struct {
 		Value int `validate:"custom"`
 	}
@@ -123,6 +123,6 @@ func TestRegisterValidationRule(t *testing.T) {
 	validData := Data{Value: 10}
 	err := v.Validate(validData)
 	if err != nil {
-		t.Errorf("Expected validation to pass, got error: %v", err)
+		t.Errorf("Expected validator to pass, got error: %v", err)
 	}
 }
