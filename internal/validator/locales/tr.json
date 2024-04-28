@@ -4,5 +4,10 @@
   "maxLength": "%s en fazla %d karakter olabilir",
   "uppercaseLetter": "%s en az bir büyük harf içermelidir",
   "lowercaseLetter": "%s en az bir küçük harf içermelidir",
-  "specialCharacter": "%s en az bir özel karakter içermelidir"
+  "specialCharacter": "%s en az bir özel karakter içermelidir",
+  "dateTooLong": "%s çok uzun",
+  "invalidDate": "%s geçerli bir tarih değil",
+  "emailIsEmpty": "%s boş olamaz",
+  "invalidEmail": "%s geçerli bir e-posta adresi değil",
+  "emailTooLong": "%s çok uzun"
 }

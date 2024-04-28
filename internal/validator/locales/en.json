@@ -4,5 +4,10 @@
   "maxLength": "%s cannot be longer than %d characters",
   "uppercaseLetter": "%s must contain at least one uppercase letter",
   "lowercaseLetter": "%s must contain at least one lowercase letter",
-  "specialCharacter": "%s must contain at least one special character"
+  "specialCharacter": "%s must contain at least one special character",
+  "dateTooLong": "%s is too far in the future",
+  "invalidDate": "%s is not a valid date",
+  "emailIsEmpty": "%s is empty",
+  "invalidEmail": "%s is not a valid email address",
+  "emailTooLong": "%s is too long"
 }
