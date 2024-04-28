@@ -35,3 +35,30 @@ func TestLoadMessagesFromJSON(t *testing.T) {
 		})
 	}
 }
+
+// TestCacheRetrieval tests if messages are retrieved from the cache when available.
+func TestCacheRetrieval(t *testing.T) {
+	// Initialize cache with some test data
+	testLang := "en"
+	testMessages := ErrorMessages{
+		"key1": "Message 1",
+		"key2": "Message 2",
+	}
+	cache[testLang] = testMessages
+
+	// Perform cache retrieval
+	retrievedMessages, err := LoadMessagesFromJSON(testLang)
+	if err != nil {
+		t.Fatalf("Error while retrieving messages from cache: %v", err)
+	}
+
+	// Compare retrieved messages with the expected ones
+	if len(retrievedMessages) != len(testMessages) {
+		t.Fatalf("Expected %d messages, got %d", len(testMessages), len(retrievedMessages))
+	}
+	for key, expectedMessage := range testMessages {
+		if retrievedMessage, ok := retrievedMessages[key]; !ok || retrievedMessage != expectedMessage {
+			t.Errorf("Unexpected message for key %q. Expected: %q, Got: %q", key, expectedMessage, retrievedMessage)
+		}
+	}
+}
