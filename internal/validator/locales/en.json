@@ -1,0 +1,8 @@
+{
+  "required": "%s is required",
+  "minLength": "%s must be at least %d characters long",
+  "maxLength": "%s cannot be longer than %d characters",
+  "uppercaseLetter": "%s must contain at least one uppercase letter",
+  "lowercaseLetter": "%s must contain at least one lowercase letter",
+  "specialCharacter": "%s must contain at least one special character"
+}

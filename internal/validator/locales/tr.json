@@ -1,0 +1,8 @@
+{
+  "required": "%s zorunludur",
+  "minLength": "%s en az %d karakter olmalıdır",
+  "maxLength": "%s en fazla %d karakter olabilir",
+  "uppercaseLetter": "%s en az bir büyük harf içermelidir",
+  "lowercaseLetter": "%s en az bir küçük harf içermelidir",
+  "specialCharacter": "%s en az bir özel karakter içermelidir"
+}
