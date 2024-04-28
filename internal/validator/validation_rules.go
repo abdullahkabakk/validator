@@ -17,25 +17,25 @@ type ValidationRule func(reflect.Value, locales.ErrorMessages, string, string) e
 var validationRules = make(map[string]ValidationRule)
 
 // RegisterValidationRule registers a custom validation rule with a given name and validation function.
-func registerValidationRule(name string, validateFunc ValidationRule) {
+func RegisterValidationRule(name string, validateFunc ValidationRule) {
 	validationRules[name] = validateFunc
 }
 
-// registerDefaultValidationRules registers the default validation rules provided by the package.
-func registerDefaultValidationRules() {
-	registerValidationRule("required", validateRequired)
-	registerValidationRule("min", validateMinLength)
-	registerValidationRule("max", validateMaxLength)
-	registerValidationRule("uppercase", validateUppercase)
-	registerValidationRule("lowercase", validateLowercase)
-	registerValidationRule("special", validateSpecialCharacter)
-	registerValidationRule("email", validateEmail)
-	registerValidationRule("date", validateDate)
+// RegisterDefaultValidationRules registers the default validation rules provided by the package.
+func RegisterDefaultValidationRules() {
+	RegisterValidationRule("required", validateRequired)
+	RegisterValidationRule("min", validateMinLength)
+	RegisterValidationRule("max", validateMaxLength)
+	RegisterValidationRule("uppercase", validateUppercase)
+	RegisterValidationRule("lowercase", validateLowercase)
+	RegisterValidationRule("special", validateSpecialCharacter)
+	RegisterValidationRule("email", validateEmail)
+	RegisterValidationRule("date", validateDate)
 }
 
-// validateStruct validates a struct based on the specified validation tags and language.
+// ValidateStruct validates a struct based on the specified validation tags and language.
 // It returns an error if validation fails or if any required input is missing.
-func validateStruct(input interface{}, lang string) error {
+func ValidateStruct(input interface{}, lang string) error {
 	if input == nil {
 		return errors.New("input is nil")
 	}
